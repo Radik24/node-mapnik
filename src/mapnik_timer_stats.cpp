@@ -1,3 +1,4 @@
+#include <string>
 #include "mapnik_timer_stats.hpp"
 #include <mapnik/performance_stats.hpp>
 
@@ -7,11 +8,10 @@ void TimerStats::Initialize(v8::Local<v8::Object> target) {
     Nan::HandleScope scope;
 
     v8::Local<v8::FunctionTemplate> lcons = Nan::New<v8::FunctionTemplate>(TimerStats::New);
-    lcons->InstanceTemplate->SetInternalFieldCount(0);
     lcons->SetClassName(Nan::New("TimerStats").ToLocalChecked());
 
     // Static method
-    Nan::SetMethod(lcons->GetFunction().As<v8::Object(), "flush", TimerStats::flush);
+    Nan::SetMethod(lcons->GetFunction().As<v8::Object>(), "flush", TimerStats::flush);
 
     target->Set(Nan::New("TimerStats").ToLocalChecked(),lcons->GetFunction());
     constructor.Reset(lcons);
@@ -24,5 +24,5 @@ NAN_METHOD(TimerStats::New){
 
 NAN_METHOD(TimerStats::flush) {
     std::string stats = mapnik::timer_stats.flush();
-    info.GetReturnValue().Set(Nan::New(stats));
+    info.GetReturnValue().Set(Nan::New<v8::String>(stats).ToLocalChecked());
 }

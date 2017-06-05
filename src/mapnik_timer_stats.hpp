@@ -10,12 +10,12 @@ class TimerStats: public Nan::ObjectWrap {
 public:
     static Nan::Persistent<v8::FunctionTemplate> constructor;
 
-    static void Initialize(v8::Local<v8::ObjectWrap> target);
+    static void Initialize(v8::Local<v8::Object> target);
 
     static NAN_METHOD(New);
 
     static NAN_METHOD(flush);
-    
+
 private:
     TimerStats();
     ~TimerStats();

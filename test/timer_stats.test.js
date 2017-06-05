@@ -9,7 +9,7 @@ describe('timer_stats', function() {
         assert.equal(mapnik.TimerStats.flush(), "");
         done();
     });
-    
+
     it('test that you cant initialize a TimerStats', function() {
         assert.throws(function() { var l = new mapnik.TimerStats(); });
     });
