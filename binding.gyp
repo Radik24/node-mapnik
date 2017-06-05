@@ -29,6 +29,7 @@
       'dependencies': [ 'make_vector_tile' ],
       'sources': [
         "src/mapnik_logger.cpp",
+        "src/mapnik_timer_stats.cpp",
         "src/node_mapnik.cpp",
         "src/blend.cpp",
         "src/mapnik_map.cpp",

@@ -7,6 +7,7 @@
 #include "mapnik_color.hpp"
 #include "mapnik_geometry.hpp"
 #include "mapnik_logger.hpp"
+#include "mapnik_timer_stats.hpp"
 #include "mapnik_feature.hpp"
 #include "mapnik_fonts.hpp"
 #include "mapnik_plugins.hpp"
@@ -125,6 +126,7 @@ extern "C" {
         Datasource::Initialize(target);
         Featureset::Initialize(target);
         Logger::Initialize(target);
+        TimerStats::Initialize(target);
         // Not production safe, so disabling indefinitely
         //JSDatasource::Initialize(target);
         MemoryDatasource::Initialize(target);
