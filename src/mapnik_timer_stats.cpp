@@ -23,6 +23,6 @@ NAN_METHOD(TimerStats::New){
 }
 
 NAN_METHOD(TimerStats::flush) {
-    std::string stats = mapnik::timer_stats.flush();
+    std::string stats = mapnik::timer_stats::instance().flush();
     info.GetReturnValue().Set(Nan::New<v8::String>(stats).ToLocalChecked());
 }
