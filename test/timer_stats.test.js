@@ -7,7 +7,7 @@ var assert = require('assert');
 mapnik.register_default_fonts();
 mapnik.register_default_input_plugins();
 
-describe('TimerStats', function() {
+describe('mapnik.TimerStats', function() {
 
     it('test that you cannot initialize a TimerStats', function() {
         assert.throws(function() { var l = new mapnik.TimerStats(); });
