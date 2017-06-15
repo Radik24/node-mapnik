@@ -25,8 +25,8 @@ describe('mapnik.TimerStats', function() {
         });
 
 
-        it('should return an empty string if no map rendered', function(done) {
-            assert.equal(mapnik.TimerStats.flush(), "");
+        it('should return an empty object if no work is done', function(done) {
+            assert.deepEqual(mapnik.TimerStats.flush(), {});
             done();
         });
 
@@ -38,7 +38,10 @@ describe('mapnik.TimerStats', function() {
                 var im = new mapnik.Image(256, 256);
                 map.render(im, function(err,im) {
                     if (err) throw err;
-                    assert.ok(/^total_map_rendering/.test(mapnik.TimerStats.flush()));
+                    var stats = mapnik.TimerStats.flush();
+                    assert.ok(stats.total_map_rendering !== undefined);
+                    assert.ok(stats.total_map_rendering.cpu_time > 0);
+                    assert.ok(stats.total_map_rendering.wall_time > 0);
                     done();
                 });
             });
