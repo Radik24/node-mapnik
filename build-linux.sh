@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -u -e
+
+export NODE_VERSION="6"
+
+CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+
+git clone --depth 1 https://github.com/mapbox/mason.git ./.mason;
+export PATH=$(pwd)/.mason:${PATH};
+mason install clang 3.8.0;
+export PATH=$(mason prefix clang 3.8.0)/bin:${PATH};
+export CXX=clang++-3.8;
+export CC=clang-3.8;
+export PYTHONPATH=$(pwd)/mason_packages/.link/lib/python2.7/site-packages;
+export PATH=./node_modules/.bin/:$PATH
+
+
+./scripts/build_against_sdk.sh
+
+node-pre-gyp package testpackage
+npm test
