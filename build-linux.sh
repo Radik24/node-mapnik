@@ -9,7 +9,7 @@ export NODE_VERSION="6"
 git clone --depth 1 https://github.com/mapbox/mason.git ./.mason;
 export PATH=$(pwd)/.mason:${PATH};
 mason install clang++ 3.9.1;
-export PATH=$(mason prefix clang 3.8.0)/bin:${PATH};
+export PATH=$(mason prefix clang++ 3.9.1)/bin:${PATH};
 export CXX=clang++-3.9;
 export CC=clang-3.9;
 export PATH=./node_modules/.bin/:$PATH
