@@ -35,9 +35,9 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.9",
     "mapnik-vector-tile": "cartodb/mapnik-vector-tile#v1.6.1-carto.2",
-    "nan": "2.14.0",
-    "node-pre-gyp": "0.13.0"
+    "nan": "2.14.0"
   },
   "bin": {
     "mapnik-index.js": "./bin/mapnik-index.js",
